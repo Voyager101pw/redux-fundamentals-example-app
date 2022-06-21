@@ -1,9 +1,10 @@
 import todoReducer from './features/todos/todosSlice';
 import filtersReducer from './features/filters/filtersSlice';
+import { combineReducers } from 'redux';
 
 export default function rootReducer(state = {}, action) {
-  return {
-    todos: todoReducer(state.todos, action),
-    filters: filtersReducer(state.filters, action),
-  }
+  return combineReducers({
+    todos: todoReducer, // аналог todos: todoReducer(state.todos, action)
+    filters: filtersReducer,
+  })
 }
